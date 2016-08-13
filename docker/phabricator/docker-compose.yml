@@ -1,5 +1,5 @@
 phabricator:
-  image: hachque/phabricator
+  build: phabricator
   ports:
     - 80:80
     - 443:443
@@ -9,7 +9,6 @@ phabricator:
     - MYSQL_LINKED_CONTAINER=DB
     - MYSQL_USER=root
     - MYSQL_PASS=rootpass
-    - PHABRICATOR_REPOSITORY_PATH=/repos
   links:
     - db
 db:
@@ -19,3 +18,5 @@ db:
     # - MYSQL_USER=user
     # - MYSQL_PASSWORD=pass
     # - MYSQL_DATABASE=phabricator
+  volumes:
+    - ./datadir:/var/lib/mysql
